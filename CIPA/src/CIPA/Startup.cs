@@ -6,9 +6,9 @@ using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Routing;
-using Microsoft.Framework.DependencyInjection;
 using CIPA.Persistence;
 using CIPA.Domain;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CIPA
 {
@@ -32,10 +32,7 @@ namespace CIPA
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             // Configure the HTTP request pipeline.
-            app.UseStaticFiles();
-
-            // Add MVC to the request pipeline.
-            app.UseMvc();
+            app.UseIISPlatformHandler();
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
         }
