@@ -4,11 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Routing;
+using Microsoft.Extensions.DependencyInjection;
 using CIPA.Persistence;
 using CIPA.Domain;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CIPA
 {
@@ -25,14 +23,21 @@ namespace CIPA
             services.AddMvc();
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
+            // services.AddWebApiConventions();
             services.AddSingleton<IRepository<Empregado>, Repository<Empregado>>();
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // Configure the HTTP request pipeline.
+            // Add the platform handler to the request pipeline.
             app.UseIISPlatformHandler();
+
+            // Configure the HTTP request pipeline.
+            app.UseStaticFiles();
+
+            // Add MVC to the request pipeline.
+            app.UseMvc();
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
         }

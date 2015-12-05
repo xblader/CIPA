@@ -10,7 +10,7 @@ using CIPA.Domain;
 
 namespace CIPA.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/empregado")]
     public class EmpregadoController : Controller
     {
         [FromServices]
