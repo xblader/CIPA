@@ -14,6 +14,7 @@ namespace CIPA
     {
         public Startup(IHostingEnvironment env)
         {
+            
         }
 
         // This method gets called by a runtime.
