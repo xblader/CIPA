@@ -21,6 +21,7 @@ namespace CIPA.Controllers
         public IEnumerable<Empregado> GetAll()
         {
             return RepoEmpregado.GetAll();
+            fdfdf
         }
 
         [HttpGet("{id}", Name = "GetEmpregado")]
